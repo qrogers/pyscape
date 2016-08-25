@@ -1,0 +1,8 @@
+name: "lily_flower"
+display_name: [" lily  ", " flower"]
+category: "resource"
+type: "plant"
+tier: "2"
+examine: "<grind> into ingredients"
+text_color: 1
+frame_color: 1

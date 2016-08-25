@@ -1,0 +1,8 @@
+name: "maple_plank"
+display_name: [" maple ", " plank "]
+category: "material"
+type: "plank"
+tier: "2"
+examine: "<Smith> into gear"
+text_color: 3
+frame_color: 3

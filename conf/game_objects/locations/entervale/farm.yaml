@@ -1,0 +1,24 @@
+description: "A small farm outside the walls of Entervale"
+base_threat: 0
+risk: 1
+recovery: 2
+game_objects:
+  units: []
+  places:
+    farm:
+      difficulty: 1
+      level: 1
+      duration: 5
+      size: 4
+      variance: 1
+      plants: ["basil", "lily", "orchid"]
+      description: "The farm is abandoned, but the earth is still fertile"
+  stations:
+    stove:
+      description: "A small oven and stove inside the run down farmhouse"
+    pestle:
+      description: "A pestle and mortar for grinding plants"
+    spinningwheel:
+      description: "A spinning wheel to spin plant fibers into textiles"
+    cauldron:
+      description: "A largs cauldron you can use to brew potions"

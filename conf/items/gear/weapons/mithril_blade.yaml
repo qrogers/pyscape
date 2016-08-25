@@ -1,0 +1,12 @@
+name: "mithril_blade"
+display_name: ["mithril ", " blade "]
+category: "gear"
+type: "weapon"
+tier: "3"
+stats: [attack: 10]
+examine: "A m9thril broadsword"
+text_color: 9
+frame_color: 9
+image: [" _||_ ",
+        " /<>\\ ",
+        " |  | "]

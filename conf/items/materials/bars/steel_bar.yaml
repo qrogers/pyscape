@@ -1,0 +1,8 @@
+name: "steel_bar"
+display_name: [" steel ", "  bar  "]
+category: "material"
+type: "bar"
+tier: "2"
+examine: "<smith> into steel gear"
+text_color: 8
+frame_color: 8

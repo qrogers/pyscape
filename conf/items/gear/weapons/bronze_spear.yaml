@@ -1,0 +1,12 @@
+name: "bronze_spear"
+display_name: [" bronze", " spear "]
+category: "gear"
+type: "weapon"
+tier: "1"
+stats: [attack: 3]
+examine: "An oak pole with a bronze spearhead"
+text_color: 5
+frame_color: 5
+image: [" _||_ ",
+        " \\  / ",
+        "  \\/  "]

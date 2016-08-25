@@ -1,0 +1,8 @@
+name: "mystic_energy"
+display_name: [" mystic", " energy"]
+category: "material"
+type: "energy"
+tier: "1"
+examine: "<weave> into an enchantment"
+text_color: 3
+frame_color: 2

@@ -1,0 +1,8 @@
+name: "raw_venison"
+display_name: ["  raw  ", "venison"]
+category: "resource"
+type: "meat"
+tier: "1"
+examine: "cook to get something edible"
+text_color: 2
+frame_color: 2

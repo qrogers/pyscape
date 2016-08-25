@@ -1,0 +1,46 @@
+description: "The docks in the great city of Entervale"
+base_threat: 0
+risk: 0
+recovery: 2
+game_objects:
+  units: [slime]
+  places:
+    grove:
+      difficulty: 2
+      level: 1
+      wait: 1
+      logs: ["oak_log", "maple_log"]
+      odds: [100      ,  10]
+      description: "A small grove of trees"
+    tracks:
+      difficulty: 1
+      level: 1
+      duration: 5
+      prey: "deer"
+      gain: [1, 2]
+      amount: 30
+      description: "The tracks of a group of deer lead off into the underbrush"
+    field:
+      difficulty: 1
+      level: 1
+      fiber: "cotton_boll"
+      gain: 10
+      amount: 25
+      description: "A field of cotton"
+  stations:
+    furnace:
+      description: "A small furnace outside the mine"
+    anvil:
+      description: "A single anvil by the furnace"
+    sawmill:
+      description: "An old rundown sawmill"
+    tannery:
+      description: "A small tannery"
+    stove:
+      description: "A small oven and stove"
+    pestle:
+      description: "A pestle and mortar for grinding plants"
+    spinningwheel:
+      description: "A spinning wheel to spin plant fibers into textiles"
+    cauldron:
+      description: "A largs cauldron you can use to brew potions"

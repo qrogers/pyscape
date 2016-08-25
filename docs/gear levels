@@ -1,0 +1,79 @@
+0 - boots
+1 - gloves
+2 - cape
+3 - helmet
+4 - weapon
+5 - offhand
+6 -
+7 - legs
+8 - chest
+9 -
+
+
+8 gear pieces
+
+offensive
+weapon  50%
+offhand 25%
+cape    15%
+gloves  10%
+
+defensive
+chest  30%
+legs   20%
+helmet 15%
+cape   15%
+boots  10%
+gloves 10%
+
+Bronze: 1-10
+    Attack: +5
+        Weapon  +3
+        Offhand +0
+        Cape    +1
+        Gloves  +1
+    Defense: +8
+        Chest   +2
+        Offhand +1
+        Legs    +1
+        Helmet  +1
+        Cape    +1
+        Boots   +1
+        Gloves  +1
+
+Steel: 11-20
+    Attack +15
+        Weapon  +8
+        Offhand +3
+        Cape    +2
+        Gloves  +2
+    Defense: +18
+        Chest  +6
+        Legs   +4
+        Helmet +3
+        Cape   +2
+        Boots  +2
+        Gloves +1
+
+Mithril: 21-30
+    Attack +25
+        Weapon  +10
+        Offhand +7
+        Cape    +5
+        Gloves  +3
+    Defense: +29
+        Chest  +9
+        Legs   +7
+        Helmet +5
+        Cape   +3
+        Boots  +3
+        Gloves +2
+
+Adamant: 31-40
+Attack +35
+Defense +40
+
+Demon: 41-50
+Attack +48
+Defense +48
+

@@ -1,0 +1,8 @@
+name: "mithrin_ore"
+display_name: ["mithrin", "  ore  "]
+category: "resource"
+type: "ore"
+tier: "3"
+examine: "<smelt> in a furnace to get a mithril bar"
+text_color: 9
+frame_color: 9

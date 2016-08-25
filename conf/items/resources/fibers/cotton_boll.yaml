@@ -1,0 +1,8 @@
+name: "cotton_boll"
+display_name: [" cotton", " boll  "]
+category: "resource"
+type: "fiber"
+tier: "1"
+examine: "spin this to get yarn"
+text_color: 0
+frame_color: 0

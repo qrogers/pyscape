@@ -1,0 +1,12 @@
+name: "bronze_chest"
+display_name: [" bronze", " chest "]
+category: "gear"
+type: "chest"
+tier: "1"
+stats: [defense: 2]
+examine: "A breastplate made from bronze and oak"
+text_color: 5
+frame_color: 5
+image: [" \\__/ ",
+        " [  ] ",
+        " \\__/ "]

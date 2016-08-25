@@ -1,0 +1,44 @@
+description: "The city of Entervale"
+base_threat: 0
+risk: 0
+recovery: 2
+text:
+  arrive:
+    first:
+      arrive: ["As you enter"]
+    inventory_contains:
+        copper_ore: ["The man greets you as you return.", "\"Ah, I see you have some copper ore. There should be some tin",
+                     "Lying around the forge that you can use to create bronze"]
+        bronze_spear: ["You have bronze spear"]
+  leave:
+    first:
+      leave: ["As you leave"]
+      #the main square of the city a man hails you.", "\"Hello traveler\", he says walking up to you",
+#       "\"It is rare to see a new face in Entervale these days.", "Come, walk with me and I will show you around. There is much you",
+#       "will need to know if you are to survive in this land.", "This is the great costal city of Entervale, though it is not as",
+#       "glorious as it once was. Here you will find many of the stations", "you will need to craft supplies. Over there is the furnace",
+#       "and and anvil you can use to craft gear. There is a mine", "To the north of the city where you can get some ore.",
+#       "You can get wood from the grove to the east, there are also", "some animals there you can hunt for hides to tan into leather",
+#       "The local tannery is just over there.", "You may also wish to grow herbs at one of the abandoned farms", "to the northwest."]v
+
+triggers:
+  arrive:
+    first: [[arrive, text, 1]]
+    inventory_contains: [[copper_ore, text, 1], [bronze_spear, text, 0]]
+  leave:
+    first: [[leave, text, 2]]
+
+game_objects:
+  units: []
+  places: []
+  stations:
+    furnace:
+      description: "A small furnace outside the mine"
+    anvil:
+      description: "A single anvil by the furnace"
+    sawmill:
+      description: "An old rundown sawmill"
+    tannery:
+      description: "A small tannery"
+    focus:
+      description: "A magical focus for weaving enchantments"

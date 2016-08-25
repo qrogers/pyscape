@@ -1,0 +1,84 @@
+Non-Combat Skills
+Gathering
+Farming
+Hunting
+Harnessing
+Crafting
+Cooking
+Stealth
+
+Combat Skills
+Health
+Offense
+Defense
+Magic
+Proficiency
+
+Raw Resources
+Ore     - Gathering
+Logs    - Gathering
+Plants  - Farming
+Fiber   - Farming
+Meat    - Hunting
+Hide    - Hunting
+Energy  - Harvesting
+Gems    - Random, Drops
+
+Gather Spot
+Mine      - Ore
+Grove     - Logs
+Farm      - Plants
+Grassland - Fiber
+Tracks    - Meat, Hide
+Charged   - Energy
+
+Processed Resources
+Bars         <- Ore
+Wood         <- Logs
+Ingredients  <- Plants
+Cloth        <- Fiber
+Leather      <- Hide
+Food         <- Meat
+Enchantments <- Energy
+
+Final Items
+Gear
+Items
+Consumables
+
+Gather raw resources
+Process them
+Combine processed resources into final items
+
+Gathering  - Ore and Logs via Mining and Woodcutting
+Farming   - Herbs and Fibers via Farming and Foraging
+Hunting    - Meat and Hide via Hunting and Skinning
+Harnessing - Energy via Harnessing
+
+Crafting   - Ore into Bars, Logs into Wood, Hide into Leather - All into items
+Alchemy    - Herbs into Ingredients, Meat into Food, Fiber into Cloth - All into Consumables
+Magic      - Energy into Enchantments
+
+Resource Actions
+Mining      -> Ore
+Chopping    -> Logs
+Planting    -> Seeds -> Crops
+Harvesting  -> Crops -> Plants
+Foraging    -> Fibers, Seeds
+Hunting     -> Meat
+Skinning    -> Hide
+Harnessing  -> Energy
+
+Processing Actions
+Smelting  - Ore    -> Bars
+Cutting   - Logs   -> Wood
+Chemistry - Plants -> Ingredients
+Spinning  - Fibers -> Cloth
+Cooking   - Meat   -> Food
+Tanning   - Hide   -> Leather
+
+Weaving   - Energy, Gems -> Enchantments
+
+Crafting   - Ore, Wood, Leather       -> Gear
+Alchemy    - Ingredients, Food, Cloth -> Consumables
+Enchanting - Enchantment, Gear        -> Enchanted Gear

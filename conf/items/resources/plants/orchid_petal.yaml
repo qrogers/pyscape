@@ -1,0 +1,8 @@
+name: "orchid_petal"
+display_name: [" orchid", " petal "]
+category: "resource"
+type: "plant"
+tier: "3"
+examine: "<grind> into ingredients"
+text_color: 1
+frame_color: 1

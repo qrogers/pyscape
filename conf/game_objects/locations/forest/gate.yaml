@@ -1,0 +1,16 @@
+description: "The main gate of Entervale"
+base_threat: 0
+risk: 1
+recovery: 2
+game_objects:
+  units: []
+  places: []
+  stations:
+    stove:
+      description: "A small oven and stove"
+    pestle:
+      description: "A pestle and mortar for grinding plants"
+    spinningwheel:
+      description: "A spinning wheel to spin plant fibers into textiles"
+    cauldron:
+      description: "A largs cauldron you can use to brew potions"

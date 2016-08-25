@@ -1,0 +1,8 @@
+name: "copper_ore"
+display_name: [" copper", "  ore  "]
+category: "resource"
+type: "ore"
+tier: "1"
+examine: "put in a furnace to get an bronze bar"
+text_color: 5
+frame_color: 5

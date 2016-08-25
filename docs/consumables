@@ -1,0 +1,21 @@
+Health potion 1-6
+Mana potion   1-6
+Offense buff  1-6
+Defense buff  1-6
+Gathering increase 246
+Stealth buff 246
+Lure 25
+Repel 25
+Reverse corruption 36
+Massive Offense 35
+Massive Defense 35
+Heal over time 135
+Mana over time 135
+Battle Potion 46 (Lure + Massive Offense + Offense)
+Sneak Potion 46 (Repel + Massive Defense + Defense)
+Restore Potion 246 (Health + Mana + Over times)
+
+Health potion = Ingredient + Food
+Mana potion   = Ingredient + Cloth
+Offense Buff  = Ingredient + Food + Cloth
+Gathering     = Ingredient + Cloth

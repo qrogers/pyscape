@@ -1,0 +1,69 @@
+fir:
+  cost:   1
+  level:  1
+  combat: True
+  effect: False
+  damage: 3
+  stats: []
+  description: "Blasts your enemy with fire, dealing damage"
+stn:
+  cost:  2
+  level: 2
+civ:
+  cost:  1
+  level: 3
+siv:
+  cost: 1
+div:
+  cost: 1
+fiv:
+  cost: 1
+giv:
+  cost: 1
+hiv:
+  cost: 1
+jiv:
+  cost: 1
+kiv:
+  cost: 1
+liv:
+  cost: 1
+qiv:
+  cost: 1
+
+####Utility#####
+
+wir:
+  cost:   1
+eiv:
+  cost: 1
+riv:
+  cost: 1
+tiv:
+  cost: 1
+yiv:
+  cost: 1
+uiv:
+  cost: 1
+iiv:
+  cost: 1
+oiv:
+  cost: 1
+piv:
+  cost: 1
+diz:
+  cost: 1
+fix:
+  cost: 1
+gic:
+  cost: 1
+hiv:
+  cost: 1
+jib:
+  cost: 1
+kin:
+  cost: 1
+lim:
+  cost: 1
+qia:
+  cost: 1

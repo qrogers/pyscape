@@ -1,0 +1,12 @@
+name: "leather_gloves"
+display_name: ["leather", "gloves "]
+category: "gear"
+type: "glove"
+tier: "1"
+stats: [defense: 1, attack: 1]
+examine: "A pair of gloves made from deer leather"
+text_color: 5
+frame_color: 5
+image: ["  ||  ",
+        " /  \\ ",
+        " |||| "]

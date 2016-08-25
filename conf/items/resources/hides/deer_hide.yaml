@@ -1,0 +1,8 @@
+name: "deer_hide"
+display_name: ["  deer ", "  hide "]
+category: "resource"
+type: "hide"
+tier: "1"
+examine: "tan this to get leather"
+text_color: 2
+frame_color: 2

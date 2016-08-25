@@ -1,0 +1,238 @@
+clear:
+    num_args: [0]
+    usage: "clear takes no arguments"
+    info: "clears the command panel"
+    color: 0
+
+status:
+    num_args: [0]
+    usage: "status takes no arguments"
+    info: "displays information on your status"
+    color: 0
+
+exit:
+    num_args: [0]
+    usage: "usage: exit"
+    info: "exits the game, saving is automatic"
+    color: 0
+
+info:
+    num_args: [1]
+    usage: "info takes the name of the command to list info for"
+    info: "info displays a description of the given command"
+    color: 1
+
+stats:
+    num_args: [2]
+    usage: "usage: stats <item>"
+    info: "tells you the stats of a piece of gear"
+    color: 1
+
+spawn:
+    num_args: [1]
+    usage: "spawn takes the name of a unit to spawn"
+    info: "spawns the given unit"
+    color: 0
+    debug:
+
+tick:
+    num_args: [1]
+    usage: "usage: tick <num_ticks>"
+    info: "progress the game a number of ticks"
+    color: 0
+    debug:
+
+xp:
+    num_args: [2]
+    usage: "usage: xp <skill> <amount>"
+    info: "gain an amount of xp in the given skill"
+    color: 0
+    debug:
+
+level:
+    num_args: [2]
+    usage: "usage: level <skill> <level>"
+    info: "set level of given skill"
+    color: 0
+    debug:
+
+create:
+    num_args: [2, 3]
+    usage: "usage: create <item> <amount>"
+    info: "creates an item"
+    color: 0
+    debug:
+
+attack:
+    num_args: [1]
+    usage: "usage: attack <enemy_name>"
+    info: "attack <enemy_name> | attacks the given enemy"
+    color: 2
+
+cast:
+    num_args: [1]
+    usage: "usage: cast <spell>"
+    info: "casts the given spell"
+    color: 0
+
+anvil:
+    num_args: [0, 2]
+    usage: "usage: anvil <item>"
+    info: "displays everything you know how to make at an anvil\nor what is required to make a specific item"
+    color: 0
+
+list:
+    num_args: [0, 1]
+    usage: "usage: list <type>"
+    info: "lists the things in the current area\nIf given a type of thing, lists only things of that type"
+    color: 3
+
+examine:
+    num_args: [1, 2]
+    usage: "usage: examine <item name>"
+    info: "displays a description of the given item in your inventory"
+    color: 4
+
+equip:
+    num_args: [2]
+    usage: "usage: equip <item>"
+    info: "equips the given item"
+    color: 0
+
+take:
+    num_args: [2]
+    usage: "usage: take <item>"
+    info: "takes the specified item, it can be picked up until you leave the area"
+    color: 0
+
+drop:
+    num_args: [1, 2, 3]
+    usage: "usage: drop <item> <amount> [all]"
+    info: "drops the specified item, it can be picked up until you leave the area"
+    color: 0
+
+move:
+    num_args: [0, 1]
+    usage: "usage: move <area>"
+    info: "moves you to any area, if no area is given\nlist place you can move to"
+    color: 0
+
+travel:
+    num_args: [0, 1]
+    usage: "usage: move <travel>"
+    info: "travles to a new location, if no loaation is given\nlist locations you can move to"
+    color: 0
+
+prospect:
+    num_args: [0, 1]
+    usage: "usage: prospect <-v, --verbose>"
+    info: "displays information about the mine in the area, if there is one\n--verbose will display detailed information"
+    color: 0
+
+mine:
+    num_args: [0]
+    usage: "usage: mine"
+    info: "mines ore from the mine in the area\nmining can be dangerous and will attract enemies"
+    color: 0
+
+cut:
+    num_args: [1]
+    usage: "usage: cut <amount>"
+    info: "Cuts trees from a nearby grove, there may be enemies in the grove"
+    color: 1
+
+hunt:
+    num_args: [0]
+    usage: "usage: hunt"
+    info: "Start a hunt for nearby wildlife"
+    color: 0
+
+farm:
+    num_args: [0, 1]
+    usage: "usage: farm <plant>"
+    info: "Plant a crop and harvest it once it grows"
+    color: 0
+
+forage:
+    num_args: [0]
+    usage: "usage: forage"
+    info: "Forage for usable plant fibers in fields"
+    color: 0
+
+harness:
+    num_args: [0]
+    usage: "usage: harness"
+    info: "Harnesses energy from a rift"
+    color: 3
+
+spin:
+    num_args: [0, 1, 2]
+    usage: "usage: spin <fiber> <quantity>"
+    info: "spins fiber\nby default spins all fibers in inventory\nyou can specify only a specifc fiber in a specific amount"
+    color: 0
+
+cook:
+    num_args: [0, 1, 2]
+    usage: "usage: cook <meat> <quantity>"
+    info: "cooks meat\nby default cooks all meats in inventory\nyou can specify only a specifc meat in a specific amount"
+    color: 0
+
+smelt:
+    num_args: [0, 1, 2]
+    usage: "usage: smelt <ore> <quantity>"
+    info: "smelts ore into bars\nby default smelts all ores in inventory\nyou can specify only a specifc ore in a specific amount"
+    color: 0
+
+mill:
+    num_args: [0, 2, 3]
+    usage: "usage: mill <logs> <quantity>"
+    info: "cuts logs into planks at a sawmill\nyou can specify a type and quantity of logs"
+    color: 3
+
+tan:
+    num_args: [0, 1, 2]
+    usage: "usage: tan <hide> <quantity>"
+    info: "tans hides into leather at a tannery\nyou can specify a type and quantity of hides"
+    color: 3
+
+grind:
+    num_args: [0, 1, 2]
+    usage: "usage: grind <plant> <quantity>"
+    info: "grinds plants into ingridients at a pestle\nyou can specify a type and quantity of plants"
+    color: 3
+
+look:
+    num_args: [0, 1]
+    usage: "usage: look: <object_name>"
+    info: "shows the description of the current area or given object"
+    color: 0
+
+smith:
+    num_args: [0, 1, 2]
+    usage: "usage: smelt <item> <quantity>"
+    info: "smiths bars, wood, and lether into gear at an anvil\n you must specify the item and amount (default 1)\nwith no arguments, list possible creations"
+    color: 0
+
+brew:
+    num_args: [0, 1, 2]
+    usage: "usage: brew <item> <quantity>"
+    info: "brew ingredients, food, and cloth into consumables at a cauldron\n you must specify the item and amount (default 1)\nwith no arguments, list possible creations"
+    color: 0
+
+weave:
+    num_args: [0, 1, 2]
+    usage: "usage: weave <item> <quantity>"
+    info: "weaves energy and gems into enchantments\n you must specify the item and amount (default 1)\nwith no arguments, list possible creations"
+    color: 0
+
+drink:
+    num_args: [2]
+    usage: "usage: drink <potion>"
+    info: "drink a potion"
+    color: 0
+
+enchant:
+    num_args: [4]
+    usage: "usage enchant <item> <enchantment>"
+    info: "enchant a piece of gear"
+    color: 0

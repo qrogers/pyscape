@@ -1,0 +1,12 @@
+name: "bronze_cape"
+display_name: [" bronze", " cape  "]
+category: "gear"
+type: "cape"
+tier: "1"
+stats: [defense: 1, attack: 1]
+examine: "A cotton cape with bronze woven in"
+text_color: 5
+frame_color: 5
+image: ["  ><  ",
+        " /  \\ ",
+        "/....\\"]

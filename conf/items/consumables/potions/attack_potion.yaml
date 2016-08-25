@@ -1,0 +1,10 @@
+name: "attack_potion"
+display_name: [" attack", " potion"]
+category: "consumables"
+type: "potion"
+tier: "1"
+duration: 20
+stats: [attack: 2, defense: 2]
+examine: "Boosts attack"
+text_color: 2
+frame_color: 2

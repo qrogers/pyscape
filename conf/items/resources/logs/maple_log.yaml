@@ -1,0 +1,8 @@
+name: "maple_log"
+display_name: [" maple ", "  log  "]
+category: "resource"
+type: "log"
+tier: "2"
+examine: "cut at a sawmill to get wood"
+text_color: 3
+frame_color: 3

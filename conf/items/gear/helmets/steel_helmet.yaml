@@ -1,0 +1,12 @@
+name: "steel_helmet"
+display_name: [" steel ", " helmet"]
+category: "gear"
+type: "helmet"
+tier: "2"
+stats: [defense: 3]
+examine: "A steel helmet"
+text_color: 7
+frame_color: 7
+image: ["T----T",
+        "\\-^^-/",
+        " \\||/ "]

@@ -1,0 +1,23 @@
+description: "A small farm outside the walls of Entervale"
+base_threat: 1
+risk: 1
+recovery: 2
+game_objects:
+  units: [slime]
+  places:
+    grove:
+      difficulty: 2
+      level: 1
+      wait: 1
+      logs: ["oak_log", "maple_log"]
+      odds: [100      , 5]
+      description: "A small grove of trees"
+    tracks:
+      difficulty: 1
+      level: 1
+      duration: 5
+      prey: "deer"
+      gain: [2, 2]
+      amount: 3
+      description: "The tracks of a group of deer lead off into the underbrush"
+  stations: []

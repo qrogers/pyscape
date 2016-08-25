@@ -1,0 +1,8 @@
+name: "bronze_bar"
+display_name: [" bronze", "  bar  "]
+category: "material"
+type: "bar"
+tier: "1"
+examine: "<smith> into bronze gear"
+text_color: 6
+frame_color: 6

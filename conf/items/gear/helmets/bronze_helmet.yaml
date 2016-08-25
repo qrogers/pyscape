@@ -1,0 +1,12 @@
+name: "bronze_helmet"
+display_name: [" bronze", " helmet"]
+category: "gear"
+type: "helmet"
+tier: "1"
+stats: [defense: 1]
+examine: "A bronze helmet"
+text_color: 5
+frame_color: 5
+image: ["/____\\",
+        "|-II-|",
+        "\\____/"]

@@ -1,0 +1,8 @@
+health:  3
+attack:  1
+defense: 1
+proficiency: 1
+aggression: 0
+drops: !!pairs [90: 5-gold, 25: 32-gold, 1: 1-bronze_spear]
+xp: !!pairs [attack: 5, defense: 3, health: 1]
+description: "A simple slime"

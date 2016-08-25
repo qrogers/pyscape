@@ -1,0 +1,12 @@
+name: "leather_shield"
+display_name: ["leather", " shield"]
+category: "gear"
+type: "offhand"
+tier: "1"
+stats: [defense: 1]
+examine: "A round leather shield"
+text_color: 5
+frame_color: 5
+image: [" /--\\ ",
+        " |oo| ",
+        " \\__/ "]

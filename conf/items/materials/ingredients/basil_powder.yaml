@@ -1,0 +1,8 @@
+name: "basil_powder"
+display_name: [" basil ", " powder"]
+category: "material"
+type: "ingredient"
+tier: "1"
+examine: "<brew> into potions"
+text_color: 3
+frame_color: 3

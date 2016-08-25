@@ -1,0 +1,10 @@
+name: "burning_aura"
+display_name: ["burning", " aura  "]
+category: "consumables"
+type: "enchantment"
+tier: "1"
+duration: -1
+stats: [attack: 2]
+examine: "Boosts attack"
+text_color: 2
+frame_color: 2

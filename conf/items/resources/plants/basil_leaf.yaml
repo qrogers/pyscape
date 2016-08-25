@@ -1,0 +1,8 @@
+name: "basil_leaf"
+display_name: [" basil ", " leaf  "]
+category: "resource"
+type: "plant"
+tier: "1"
+examine: "<Grind> into ingredients"
+text_color: 3
+frame_color: 3

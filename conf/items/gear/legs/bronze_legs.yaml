@@ -1,0 +1,12 @@
+name: "bronze_legs"
+display_name: [" bronze", " legs  "]
+category: "gear"
+type: "leg"
+tier: "1"
+stats: [defense: 1]
+examine: "A pair of bronze legs"
+text_color: 5
+frame_color: 5
+image: [" |__| ",
+        " |||| ",
+        " |||| "]

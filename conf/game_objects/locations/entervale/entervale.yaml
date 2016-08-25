@@ -1,0 +1,16 @@
+map:
+  entervale: [forest]
+  forest: [entervale]
+points:
+  entervale: [2,2]
+  forest: [5,4]
+start: docks
+colors:
+  "0" : 0
+  "1" : 1
+  "2" : 2
+  "3" : 3
+  "4" : 7
+  "5" : 5
+  " " : 0
+  "#" : 254

@@ -1,0 +1,8 @@
+name: "iron_ore"
+display_name: [" iron  ", "  ore  "]
+category: "resource"
+type: "ore"
+tier: "2"
+examine: "<Smelt> in a furnace to get an iron bar"
+text_color: 7
+frame_color: 7
