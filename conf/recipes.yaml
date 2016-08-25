@@ -18,7 +18,7 @@ all_crafting_recipes:
       20: [swift_botos:    [mithril_bar, tiger_leather, willow_plank]]
       21: [mithril_gloves: [mithril_bar, tiger_leather, tiger_leather]]
       22: [mithril_cape:   [mithril_bar, mithril_bar, tiger_leather, willow_plank]]
-      23: [mithril_helmet: [mithril_bar, mithril_bar, tiger_leather, tiger_leather, willow_plank]
+      23: [mithril_helmet: [mithril_bar, mithril_bar, tiger_leather, tiger_leather, willow_plank]]
       24: [mithril_blade:  [mithril_bar, mithril_bar, mithril_bar, mithril_bar, tiger_leather, willow_plank]]
       25: [mithril_claw:   [mithril_bar, mithril_bar, tiger_leather, willow_plank]]
       27: [mithril_legs:   [mithril_bar, mithril_bar, mithril_bar, tiger_leather, willow_plank]]
