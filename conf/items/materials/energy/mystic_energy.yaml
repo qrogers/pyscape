@@ -1,5 +1,5 @@
 name: "mystic_energy"
-display_name: [" mystic", " energy"]
+display_name: ["mystic ", " energy"]
 category: "material"
 type: "energy"
 tier: "1"

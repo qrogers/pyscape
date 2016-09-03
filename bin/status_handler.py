@@ -11,8 +11,11 @@ class StatusHandler():
 
         self.output("")
 
-    def output(self, text, color_pair=1, style=curses.A_NORMAL):
+    def output(self, text, color_pair=None, style=curses.A_NORMAL):
         str_text = str(text).replace("_", " ")
+
+        if color_pair is None:
+            color_pair = curses.color_pair(254)
 
         def a_rep(matchobj):
             return matchobj.group(0).replace("a", "an", 1)
@@ -32,13 +35,15 @@ class StatusHandler():
                 self.window.addstr(self.history[num_lines][0], self.history[num_lines][1])
             self.window.move(cursor[0] + 1, 1)
             num_lines -= 1
-        self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))
         self.window.refresh()
 
-    def slow_output(self, text, time, color_pair=1, style=curses.A_NORMAL):
+    def slow_output(self, text, time, color_pair=None, style=curses.A_NORMAL):
         str_text = str(text)
+
+        if color_pair is None:
+            color_pair = curses.color_pair(254)
+
         self.history.insert(0, ("", color_pair + style))
         for char in str_text:
             self.history[0] = (self.history[0][0] + char, self.history[0][1])
@@ -54,9 +59,7 @@ class StatusHandler():
                     self.window.addstr(self.history[num_lines][0], self.history[num_lines][1])
                 self.window.move(cursor[0] + 1, 1)
                 num_lines -= 1
-            self.window.attron(curses.color_pair(255))
             self.window.box()
-            self.window.attroff(curses.color_pair(255))
             self.window.refresh()
             if char == ",":
                 time.sleep(.5)

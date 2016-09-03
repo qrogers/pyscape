@@ -2,22 +2,20 @@ description: "A small copper mine north of Entervale"
 base_threat: 1
 risk: 1
 recovery: 2
+max_enemies: 7
+text:
+triggers: {}
 game_objects:
-  units: [slime]
+  units: !!pairs [slime : 10]
+  npcs: []
   places:
     mine:
       difficulty: 1
       level: 1
-      amount: 11
-      max_amount: 22
-      max_per_run: 6
-      ores: ["copper_ore", "iron_ore"]
-      rate: 1
+      amount: 15
+      max_amount: 20
+      max_per_run: 8
+      ores: ["copper_ore"]
+      rate: 2
       description: "The mine is abandoned, but the ore it close to the surface"
-    rift:
-      difficulty: 1
-      level: 1
-      amount: 3
-      energy: "mystic_energy"
-      description: "A small rift of mystic energy"
   stations: []

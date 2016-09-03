@@ -5,7 +5,7 @@ class HUDHandler():
         self.window = window
         self.var_handler = var_handler
         self.text = [None] * 12
-        self.color = curses.color_pair(0)
+        self.color = curses.color_pair(254)
         self.style = curses.A_NORMAL
 
     def text_update(self):
@@ -23,7 +23,7 @@ class HUDHandler():
         self.text[4] = "Ticks: " + str(self.var_handler.get('time_handler').ticks)
         self.text[5] = "Moves: " + str(self.var_handler.get('time_handler').moves)
         self.text[6] = ""
-        self.text[7] = "Combat Stats:"
+        self.text[7] = "Gear Stats:"
         pna = "" if player.attack_current  < player.attack_level  else "+"
         pnd = "" if player.defense_current < player.defense_level else "+"
         pns = "" if player.stealth_current < player.stealth_level else "+"
@@ -47,7 +47,5 @@ class HUDHandler():
             location = self.window.getyx()
             self.window.addstr(line, self.color + self.style)
             self.window.move(location[0] + 1, location[1])
-        self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))
         self.window.refresh()

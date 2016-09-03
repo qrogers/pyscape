@@ -1,0 +1,8 @@
+name: "flax_fiber"
+display_name: [" flax  ", " fiber "]
+category: "resource"
+type: "fiber"
+tier: "2"
+examine: "spin this to get linen"
+text_color: 100
+frame_color: 100

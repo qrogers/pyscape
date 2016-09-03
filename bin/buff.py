@@ -8,13 +8,17 @@ class Buff():
         self.player = player
         self.time = time_handler
 
-        self.buff_effects = self.BuffEffects(self.player)
+        self.buff_effect = None
+
+        self.buff_effects = self.BuffEffects(self.player, self)
 
         if self.duration > 0:
             self.time.register_tick_event(self.tick)
 
     def tick(self):
         self.duration -= 1
+        if self.buff_effect is not None:
+            self.buff_effect()
         if self.duration == 0:
             self.player.remove_buff(self)
 
@@ -35,14 +39,40 @@ class Buff():
             self.buff_effects.buff_effects[self.skill]("remove", self.amount)
 
     class BuffEffects():
-        def __init__(self, player):
+        def __init__(self, player, buff):
             self.player = player
-            self.buff_effects = {"heal" : self.heal}
+            self.buff_effects = {"heal" : self.heal,
+                                 "restore" : self.restore,
+                                 "refresh" : self.refresh}
+            self.buff = buff
 
         def heal(self, action, amount):
             if action == "apply":
                 self.player.health_current += amount
                 if self.player.health_current > self.player.health_level:
                     self.player.health_current = self.player.health_level
+                self.player.update_skill_window()
             elif action == "remove":
                 pass
+
+        def restore(self, action, amount):
+            def tick_heal():
+                if self.player.health_current < self.player.health_level and self.buff.duration % 2 == 0:
+                        self.player.health_current += amount
+                        if self.player.health_current > self.player.health_level:
+                            self.player.health_current = self.player.health_level
+                self.player.update_skill_window()
+            if action == "apply":
+                self.buff.buff_effect = tick_heal
+            elif action == "remove":
+                self.buff.buff_effect = None
+
+        def refresh(self, action, amount):
+            def tick_magic():
+                if self.player.mgaic_current < self.player.magic_level and self.buff.duration % 2 == 0:
+                        self.player.magic_current += amount
+                self.player.update_skill_window()
+            if action == "apply":
+                self.buff.buff_effect = tick_magic
+            elif action == "remove":
+                self.buff.buff_effect = None

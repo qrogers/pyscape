@@ -2,14 +2,18 @@ description: "The docks near the great city of Entervale"
 base_threat: 0
 risk: 0
 recovery: 2
+max_enemies: 4
+text:
+triggers: {}
 game_objects:
-  units: [slime]
+  units: []
+  npcs: []
   places:
     field:
       difficulty: 1
       level: 1
       fiber: "cotton_boll"
-      gain: 10
-      amount: 25
+      gain: 5
+      amount: 15
       description: "A field of cotton"
   stations: []

@@ -1,0 +1,10 @@
+name: "refresh_mix"
+display_name: ["refresh", "  mix  "]
+category: "consumables"
+type: "potion"
+tier: "1"
+duration: 12
+stats: [refresh: 1]
+examine: "restores magic over time"
+text_color: 1
+frame_color: 3

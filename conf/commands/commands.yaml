@@ -49,6 +49,13 @@ xp:
     color: 0
     debug:
 
+gold:
+    num_args: [1]
+    usage: "usage: gold <amount>"
+    info: "gain an amount of gold"
+    color: 253
+    debug:
+
 level:
     num_args: [2]
     usage: "usage: level <skill> <level>"
@@ -62,6 +69,36 @@ create:
     info: "creates an item"
     color: 0
     debug:
+
+store:
+    num_args: [1, 2, 3]
+    usage: "usage: store <item> <amount>"
+    info: "stores an amount of an item in your bank"
+    color: 0
+
+withdraw:
+    num_args: [1, 2, 3]
+    usage: "usage: withdraw <item> <amount>"
+    info: "withdraws an amount of an item from your bank"
+    color: 0
+
+buy:
+    num_args: [0, 2]
+    usage: "usage: buy <item>"
+    info: "buys an item from a store"
+    color: 0
+
+sell:
+    num_args: [2]
+    usage: "usage: sell <item>"
+    info: "sells an item to a store"
+    color: 0
+
+bank:
+    num_args: [0]
+    usage: "usage: bank"
+    info: "switches the inventory between crarried items and banked items"
+    color: 0
 
 attack:
     num_args: [1]

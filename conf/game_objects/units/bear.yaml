@@ -1,0 +1,8 @@
+health:  8
+attack:  2
+defense: 1
+proficiency: 2
+aggression: 5
+drops: !!pairs [100 : 2-gold, 90 : 6-gold, 25 : 44-gold, 8 : raw_venison, 3 : 1-quartz]
+xp: !!pairs [attack: 30, proficiency: 12, health: 10]
+description: "A large bear"

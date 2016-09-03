@@ -1,10 +1,12 @@
 from unit_handler import UnitHandler
+import game_objects.npcs as npcs
 import game_objects.places as places
 import game_objects.stations as stations
 
 class Area():
 
     #TODO: Add rift spawning
+    #TODO: Set spawning when inactive
 
     def __init__(self, name, location, conf, var_handler):
         self.name = name
@@ -13,15 +15,11 @@ class Area():
         self._conf = conf
         self.var_handler = var_handler
         self.description = self._conf['description']
-        try:
-            self.text = self._conf['text']
-            self.triggers = self._conf['triggers']
-        except KeyError:
-            #TODO: Add text and triggers to all areas and remove this try/except
-            self.text = []
-            self.triggers = {}
+        self.text = self._conf['text']
+        self.triggers = self._conf['triggers']
         self.game_objects = dict()
         self.game_objects['units'] = []
+        self.game_objects['npcs'] = []
         self.game_objects['places'] = []
         self.game_objects['stations'] = []
 
@@ -29,13 +27,17 @@ class Area():
         self.risk = self._conf['risk']
         self.recovery = self._conf['recovery']
         self.threat = self.base_threat
+        self.max_enemies = self._conf['max_enemies']
 
         self.active = False
 
         self.unit_handler = UnitHandler(self, var_handler)
 
         for unit in self._conf['game_objects']['units']:
-            self.spawn_game_object(unit, 'units', unit)
+            self.unit_handler.add_spawner(unit[0], unit[1])
+
+        for npc in self._conf['game_objects']['npcs']:
+            self.spawn_game_object(self._conf['game_objects']['npcs'][npc], 'npcs', npc)
 
         for place in self._conf['game_objects']['places']:
             self.spawn_game_object(self._conf['game_objects']['places'][place], 'places', place)
@@ -45,8 +47,9 @@ class Area():
 
     def spawn_game_object(self, info, object_type, name):
         new_object = None
-        if object_type == 'units':
-            new_object = self.unit_handler.spawn_unit(self, info)
+        if object_type == 'npcs':
+            new_object = getattr(getattr(npcs, name), name[:1].upper() + name[1:])(len(self.game_objects['npcs']),
+                                                        self, name, info['description'], info)
         elif object_type == 'places':
             new_object = getattr(getattr(places, name), name[:1].upper() + name[1:])(len(self.game_objects['places']),
                                                         self, name, info['description'], info['difficulty'],
@@ -67,10 +70,12 @@ class Area():
 
     def activate(self):
         self.active = True
+        self.unit_handler.activate()
         self.run_triggers("arrive")
 
     def deactivate(self):
         self.active = False
+        self.unit_handler.deactivate()
         self.run_triggers("leave")
         self.var_handler.get('time_handler').deregister_tick_event(self.tick)
 

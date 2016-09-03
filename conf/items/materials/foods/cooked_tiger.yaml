@@ -1,0 +1,8 @@
+name: "cooked_tiger"
+display_name: ["cooked ", " tiger "]
+category: "material"
+type: "food"
+tier: "3"
+examine: "<mix> with ingredients"
+text_color: 19
+frame_color: 19

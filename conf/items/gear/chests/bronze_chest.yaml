@@ -1,5 +1,5 @@
 name: "bronze_chest"
-display_name: [" bronze", " chest "]
+display_name: ["bronze ", " chest "]
 category: "gear"
 type: "chest"
 tier: "1"

@@ -1,0 +1,8 @@
+name: "jute_fiber"
+display_name: [" jute  ", " fiber "]
+category: "resource"
+type: "fiber"
+tier: "3"
+examine: "spin this to get thread"
+text_color: 100
+frame_color: 100

@@ -1,0 +1,8 @@
+name: "cosmic_energy"
+display_name: ["cosmic ", " energy"]
+category: "material"
+type: "energy"
+tier: "2"
+examine: "<weave> into an enchantment"
+text_color: 4
+frame_color: 5

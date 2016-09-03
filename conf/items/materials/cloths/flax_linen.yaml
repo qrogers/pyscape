@@ -1,0 +1,8 @@
+name: "flax_linen"
+display_name: [" flax  ", " linen "]
+category: "material"
+type: "cloth"
+tier: "2"
+examine: "<mix> with ingredients"
+text_color: 100
+frame_color: 100

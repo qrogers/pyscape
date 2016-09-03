@@ -1,0 +1,12 @@
+name: "mithril_gloves"
+display_name: ["mithril", "gloves "]
+category: "gear"
+type: "glove"
+tier: "3"
+stats: [defense: 2, attack: 3]
+examine: "a pair of gloves made from mithril"
+text_color: 9
+frame_color: 9
+image: ["  ||  ",
+        " /==\\ ",
+        " \\||/ "]

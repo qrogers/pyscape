@@ -1,0 +1,12 @@
+name: "mithril_claw"
+display_name: ["mithril", "  claw "]
+category: "gear"
+type: "offhand"
+tier: "3"
+stats: [attack: 7]
+examine: "a mithril claw worn on the off-hand"
+text_color: 9
+frame_color: 9
+image: [" [++] ",
+        " \\||/ ",
+        " /||\\ "]

@@ -1,0 +1,10 @@
+name: "defense_mix"
+display_name: ["defense", "  mix  "]
+category: "consumables"
+type: "potion"
+tier: "1"
+duration: 45
+stats: [defense: 2]
+examine: "small boost to defense"
+text_color: 5
+frame_color: 5

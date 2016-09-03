@@ -2,20 +2,24 @@ description: "A small farm outside the walls of Entervale"
 base_threat: 1
 risk: 1
 recovery: 2
+max_enemies: 6
+text:
+triggers: {}
 game_objects:
-  units: [slime]
+  units: !!pairs [slime : 10, bear : 20]
+  npcs: []
   places:
     grove:
-      difficulty: 2
+      difficulty: 3
       level: 1
       wait: 1
       logs: ["oak_log", "maple_log"]
-      odds: [100      , 5]
+      odds: [100      , 1]
       description: "A small grove of trees"
     tracks:
       difficulty: 1
       level: 1
-      duration: 5
+      duration: 4
       prey: "deer"
       gain: [2, 2]
       amount: 3

@@ -7,6 +7,6 @@ stats: [defense: 1]
 examine: "A bronze helmet"
 text_color: 5
 frame_color: 5
-image: ["/____\\",
+image: ["/----\\",
         "|-II-|",
         "\\____/"]

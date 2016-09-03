@@ -1,0 +1,8 @@
+name: "adamant_bar"
+display_name: ["adamant", "  bar  "]
+category: "material"
+type: "bar"
+tier: "4"
+examine: "<smith> into adamant gear"
+text_color: 12
+frame_color: 12

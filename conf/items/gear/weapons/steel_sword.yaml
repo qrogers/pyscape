@@ -7,6 +7,6 @@ stats: [attack: 8]
 examine: "A steel longsword"
 text_color: 7
 frame_color: 7
-image: ["   \\/ ",
-        "   /\\ ",
-        "  /   "]
+image: ["  \\   ",
+        "   \\/ ",
+        "   /\\ "]

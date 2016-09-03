@@ -1,0 +1,8 @@
+name: "jute_thread"
+display_name: [" jute  ", " thread"]
+category: "material"
+type: "cloth"
+tier: "3"
+examine: "<mix> with ingredients"
+text_color: 100
+frame_color: 100

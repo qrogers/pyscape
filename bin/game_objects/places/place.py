@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta
 from bin.game_objects.game_object import GameObject
 
 class Place(GameObject):

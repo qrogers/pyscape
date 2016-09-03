@@ -1,0 +1,8 @@
+name: "topaz_gem"
+display_name: [" topaz ", "  gem  "]
+category: "resource"
+type: "gem"
+tier: "2"
+examine: "used to make enchantments"
+text_color: 254
+frame_color: 254

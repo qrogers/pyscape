@@ -61,76 +61,117 @@ def main(stdscr):
     lower_middle = (2 * hincrement, wincrement)
     #lower_right= (2 * hincrement, 2 * wincrement)
 
-    # Loadout   | HUD      | Skills
-    # World Map | Spells   | Inventory
+    # Skills    | Spells   | Loadout
+    # HUD       | Map      | Inventory
     # Terminal  | Status   | Inventory
 
+    # Terminal green
+    curses.init_pair(1, 46, curses.COLOR_BLACK)
+    # Dull red
+    curses.init_pair(2, 196, curses.COLOR_BLACK)
+    # Dull Teal
+    curses.init_pair(3, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    # Black on Grey
+    curses.init_pair(4, curses.COLOR_BLACK, 244)
+    # bronze
+    curses.init_pair(5, 208, curses.COLOR_BLACK)
+    curses.init_pair(6, 208, 130)
+    # steel
+    curses.init_pair(7, 252, curses.COLOR_BLACK)
+    curses.init_pair(8, 253, 247)
+    # mithril
+    curses.init_pair(9, 117, curses.COLOR_BLACK)
+    curses.init_pair(10, 117, 33)
+    # adamant
+    curses.init_pair(11, 99, curses.COLOR_BLACK)
+    curses.init_pair(12, 52, 99)
+
+    # demon
+    curses.init_pair(13, 92, curses.COLOR_BLACK)
+    curses.init_pair(14, 52, 99)
+
+    # spark
+    curses.init_pair(15, 92, curses.COLOR_BLACK)
+    curses.init_pair(16, 52, 99)
+
+    # night
+    curses.init_pair(17, 92, curses.COLOR_BLACK)
+    curses.init_pair(18, 52, 99)
+
+    # cooked meat
+    curses.init_pair(19, 124, curses.COLOR_BLACK)
+
+    # leather
+    curses.init_pair(20, 130, curses.COLOR_BLACK)
+
+    # oak
+    curses.init_pair(21, 172, curses.COLOR_BLACK)
+
+    # maple
+    curses.init_pair(22, 167, curses.COLOR_BLACK)
+
+    # willow
+    curses.init_pair(23, 137, curses.COLOR_BLACK)
+
+    # flax
+    curses.init_pair(100, 100, curses.COLOR_BLACK)
+
+    # gold
+    curses.init_pair(253, 220, curses.COLOR_BLACK)
+    # white
+    curses.init_pair(254, 252, curses.COLOR_BLACK)
+    # box color, dull grey
+    curses.init_pair(255, 240, curses.COLOR_BLACK)
+
     terwin = curses.newwin(hincrement, wincrement, lower_left[0], lower_left[1])
+    terwin.attron(curses.color_pair(255))
     terwin.box()
     ter_panel = curses.panel.new_panel(terwin)
     ter_panel.top()
 
     hudwin = curses.newwin(hincrement, wincrement, middle_left[0], middle_left[1])
+    hudwin.attron(curses.color_pair(255))
     hudwin.box()
     hud_panel = curses.panel.new_panel(hudwin)
     hud_panel.top()
 
     invwin = curses.newwin(hincrement * 2, wincrement, middle_right[0], middle_right[1])
+    invwin.attron(curses.color_pair(255))
     invwin.box()
     inv_panel = curses.panel.new_panel(invwin)
     inv_panel.top()
 
     stswin = curses.newwin(hincrement, wincrement, lower_middle[0], lower_middle[1])
+    stswin.attron(curses.color_pair(255))
     stswin.box()
     sts_panel = curses.panel.new_panel(stswin)
     sts_panel.top()
 
     sklwin = curses.newwin(hincrement, wincrement, upper_left[0], upper_left[1])
+    sklwin.attron(curses.color_pair(255))
     sklwin.box()
     skl_panel = curses.panel.new_panel(sklwin)
     skl_panel.top()
 
     eqpwin = curses.newwin(hincrement, wincrement, upper_right[0], upper_right[1])
+    eqpwin.attron(curses.color_pair(255))
     eqpwin.box()
     eqp_panel = curses.panel.new_panel(eqpwin)
     eqp_panel.top()
 
     mapwin = curses.newwin(hincrement, wincrement, middle_middle[0], middle_middle[1])
+    mapwin.attron(curses.color_pair(255))
     mapwin.box()
     map_panel = curses.panel.new_panel(mapwin)
     map_panel.top()
 
     splwin = curses.newwin(hincrement, wincrement, upper_middle[0], upper_middle[1])
+    splwin.attron(curses.color_pair(255))
     splwin.box()
     spl_panel = curses.panel.new_panel(splwin)
     spl_panel.top()
 
     curses.start_color()
-
-    #Terminal green
-    curses.init_pair(1, 46, curses.COLOR_BLACK)
-    #Dull red
-    curses.init_pair(2, 9, curses.COLOR_BLACK)
-    #Dull Teal
-    curses.init_pair(3, curses.COLOR_CYAN, curses.COLOR_BLACK)
-    #Black on Grey
-    curses.init_pair(4, curses.COLOR_BLACK, 244)
-    #bronze
-    curses.init_pair(5, 208, curses.COLOR_BLACK)
-    curses.init_pair(6, 208, 130)
-    #steel
-    curses.init_pair(7, 252, curses.COLOR_BLACK)
-    curses.init_pair(8, 253, 247)
-    #mithril
-    curses.init_pair(9, 117, curses.COLOR_BLACK)
-    curses.init_pair(10, 117, 33)
-
-    #Gold
-    curses.init_pair(253, 220, curses.COLOR_BLACK)
-    #White
-    curses.init_pair(254, 255, curses.COLOR_BLACK)
-    #Box color, dull grey
-    curses.init_pair(255, 240, curses.COLOR_BLACK)
 
     curses.cbreak()
     curses.noecho()
@@ -188,7 +229,7 @@ def main(stdscr):
             io_handler.output(output[0], output[1])
             hud_handler.text_update()
             hud_panel.top()
-            inventory_handler.update_inv_window()
+            #inventory_handler.draw_bank()
             curses.panel.update_panels()
 
     except KeyboardInterrupt:

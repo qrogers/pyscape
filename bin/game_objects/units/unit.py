@@ -10,6 +10,7 @@ class Unit(GameObject):
     def __init__(self, number, area, name):
         self.stats = self._load_stats(self.__class__.__name__.lower())
         super(Unit, self).__init__(number, area, name, self.stats['description'])
+        self.display_name = (name[:1].upper() + name[1:]).replace("_", " ")
         self.health_level = self.stats['health']
         self.attack_level = self.stats['attack']
         self.defense_level = self.stats['defense']

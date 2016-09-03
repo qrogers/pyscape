@@ -4,5 +4,5 @@ category: "resource"
 type: "plant"
 tier: "1"
 examine: "<Grind> into ingredients"
-text_color: 3
-frame_color: 3
+text_color: 1
+frame_color: 1

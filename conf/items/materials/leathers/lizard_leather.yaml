@@ -1,0 +1,8 @@
+name: "lizard_leather"
+display_name: [" lizard", "leather"]
+category: "material"
+type: "leather"
+tier: "2"
+examine: "<smith> into gear"
+text_color: 0
+frame_color: 0

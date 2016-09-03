@@ -1,9 +1,9 @@
 name: "leather_boots"
-display_name: [" leather", " boots "]
+display_name: ["leather ", " boots "]
 category: "gear"
 type: "boot"
 tier: "1"
-stats: [attack: 0, defense: 1]
+stats: [defense: 1]
 examine: "Leather boots reienforced with bronze"
 text_color: 5
 frame_color: 5

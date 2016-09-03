@@ -2,6 +2,8 @@ import curses
 from math import ceil
 from random import randint
 
+#TODO: Implement run
+
 class CombatHandler():
     def __init__(self, var_handler):
         self.var_handler = var_handler
@@ -68,7 +70,7 @@ class CombatHandler():
             state = enemy.take_damage(player_damage)
         if state == "alive" or state == "miss":
             if randint(0, 100) <= enemy_accuracy:
-                enemy_damage = enemy.attack_current - int(enemy.defense_current * 0.65)
+                enemy_damage = enemy.attack_current - int(player.defense_current * 0.65)
                 if enemy_damage < 0:
                     enemy_damage = 0
                 player.take_damage(enemy_damage)

@@ -1,0 +1,8 @@
+name: "cooked_lizard"
+display_name: ["cooked ", " lizard"]
+category: "material"
+type: "food"
+tier: "2"
+examine: "<mix> with ingredients"
+text_color: 19
+frame_color: 19

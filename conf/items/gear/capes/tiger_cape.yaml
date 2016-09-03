@@ -1,0 +1,12 @@
+name: "tiger_cape"
+display_name: [" tiger ", "  cape "]
+category: "gear"
+type: "cape"
+tier: "3"
+stats: [defense: 3, attack: 5]
+examine: "a cape made of tiger leather"
+text_color: 9
+frame_color: 9
+image: ["  /\\  ",
+        " {<>} ",
+        "/-++-\\"]

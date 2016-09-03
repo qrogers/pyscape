@@ -4,8 +4,13 @@ class Cauldron(Station):
     def __init__(self, number, area, name, description):
         super(Cauldron, self).__init__(number, area, name, description)
 
-        self.xp_bounty = {"attack_potion" : 50,
-                          "heal_potion" : 75
+        self.xp_bounty = {"healing_mix"   : 50,
+                          "attack_mix"    : 55,
+                          "defense_mix"   : 60,
+                          "magic_mix"     : 65,
+                          "restore_mix"   : 70,
+                          "refresh_mix"   : 75,
+                          "healing_salve" : 100
                           }
 
     def brew(self, materials, name):

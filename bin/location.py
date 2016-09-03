@@ -59,6 +59,7 @@ class Location():
         new_location.move(self.start_area)
 
     def draw_area_map(self):
+        self.window.attron(curses.color_pair(254))
         with open(self.conf_dir + "area_map", 'r') as area_map:
             draw_area = area_map.read()
         with open(self.conf_dir + "color_map", 'r') as color_map:
@@ -79,7 +80,7 @@ class Location():
             self.window.move(self.window.getyx()[0] + 1, offset)
             for ch in line:
                 if ch == str(self.areas.keys().index(self.active.name)):
-                    self.window.addch(current, curses.color_pair(254))
+                    self.window.addch(current, curses.color_pair(2))
                 else:
                     self.window.addch(ch, curses.color_pair(self.colors[color_area[i]]))
                 i += 1
@@ -87,13 +88,15 @@ class Location():
         self.window.move(1, offset + 2)
         for area in self.areas:
             if area == self.active.name:
-                self.window.addstr(current + ":" + area + " ")
+                self.window.addstr(current + ":" + area + " ", curses.color_pair(2))
             else:
                 self.window.addstr(str(self.areas.keys().index(area)) + ":" + area + " ")
             if self.window.getyx()[1] > 60:
                 self.window.move(2, offset + 2)
+        self.window.attroff(curses.color_pair(254))
 
     def draw_location_map(self):
+        self.window.attron(curses.color_pair(254))
         draw_location = [["/","\\"],
                          [],
                          [],
@@ -172,13 +175,15 @@ class Location():
         for line in draw_location:
             self.window.move(self.window.getyx()[0] + 1, offset)
             for ch in line:
-                self.window.addch(ch)
+                if ch == current:
+                    self.window.addch(ch, curses.color_pair(2))
+                else:
+                    self.window.addch(ch)
         self.window.move(self.window.getmaxyx()[0] - 2, offset)
         for location in self.location_map:
             if location == self.name:
-                self.window.addstr(current + ":" + location + " ")
+                self.window.addstr(current + ":" + location + " ", curses.color_pair(2))
             else:
                 self.window.addstr(str(self.location_map.index(location)) + ":" + location + " ")
         self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))

@@ -15,7 +15,17 @@ Battle Potion 46 (Lure + Massive Offense + Offense)
 Sneak Potion 46 (Repel + Massive Defense + Defense)
 Restore Potion 246 (Health + Mana + Over times)
 
-Health potion = Ingredient + Food
-Mana potion   = Ingredient + Cloth
-Offense Buff  = Ingredient + Food + Cloth
-Gathering     = Ingredient + Cloth
+food = health
+cloth = mana
+
+mix
+salve
+draft
+tonic
+potion
+elixir
+
+Stat enchantments
+Lifesteal
+Mana steal
+Poison

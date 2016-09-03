@@ -1,0 +1,8 @@
+name: "lizard_hide"
+display_name: [" lizard", " hide  "]
+category: "resource"
+type: "hide"
+tier: "2"
+examine: "tan this to get leather"
+text_color: 2
+frame_color: 2

@@ -2,8 +2,12 @@ description: "The docks in the great city of Entervale"
 base_threat: 0
 risk: 0
 recovery: 2
+max_enemies: 4
+text:
+triggers: {}
 game_objects:
   units: [slime]
+  npcs: []
   places:
     grove:
       difficulty: 2

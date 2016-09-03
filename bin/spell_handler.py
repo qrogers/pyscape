@@ -5,6 +5,9 @@ from math import floor
 
 from bin.buff import Buff
 
+#TODO: Give xp for casting spells
+#TODO: Improve casting effect message
+
 class SpellHander():
     def __init__(self, splwin, var_handler):
         self.time   = var_handler.get('time_handler')
@@ -26,7 +29,7 @@ class SpellHander():
                     if enemy is None:
                         return "That is a spell that can only be cast in combat"
                     else:
-                        enemy.take_damage(floor(cast_spell['damage'] * (1 + (int(self.player.magic_current) / 100))))
+                        enemy.take_damage(int(floor(cast_spell['damage']) * (1 + (int(self.player.magic_current) / 100))))
                 self.player.magic_current -= cast_spell['cost']
                 self.update_window()
                 for buff in self.player.buffs:
@@ -41,13 +44,11 @@ class SpellHander():
                     self.spells.effects[spell]()
                 self.update_window()
                 return "You cast {0}".format(spell.upper())
-        except AttributeError:
+        except KeyError:
             return "That is not a spell"
 
-    # def combat_cast(self, spell, enemy):
-    #     pass
-
     def update_window(self):
+        self.window.attron(curses.color_pair(254))
         self.window.move(1,1)
         self.player.update_skill_window()
         maxyx = self.window.getmaxyx()
@@ -76,7 +77,7 @@ class SpellHander():
         for line in combat_spell_map:
             for spell in line:
                 self.window.move(i, j)
-                color = 3 if spells[spell.lower()]['cost']  > self.player.magic_current else 0
+                color = 3 if spells[spell.lower()]['cost']  > self.player.magic_current else 254
                 color = 4 if spells[spell.lower()]['level'] > self.player.magic_level   else color
                 self.window.addstr(spell, curses.color_pair(color))
                 j += 6
@@ -88,7 +89,7 @@ class SpellHander():
         for line in utility_spell_map:
             for spell in line:
                 self.window.move(i, j)
-                color = 3 if spells[spell.lower()]['cost'] > self.player.magic_current else 0
+                color = 3 if spells[spell.lower()]['cost'] > self.player.magic_current else 254
                 self.window.addstr(spell, curses.color_pair(color))
                 j += 6
                 if j > 64:
@@ -109,7 +110,7 @@ class SpellHander():
         self.window.addstr("Overcharge")
         self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))
+        self.window.refresh()
 
     class Spells():
         def __init__(self):

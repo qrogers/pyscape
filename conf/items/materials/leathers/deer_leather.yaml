@@ -1,8 +1,8 @@
 name: "deer_leather"
-display_name: ["  deer ", "leather"]
+display_name: [" deer  ", "leather"]
 category: "material"
 type: "leather"
 tier: "1"
 examine: "<smith> into gear"
-text_color: 0
-frame_color: 0
+text_color: 20
+frame_color: 20

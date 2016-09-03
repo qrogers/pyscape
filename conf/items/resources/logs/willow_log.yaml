@@ -1,0 +1,8 @@
+name: "willow_log"
+display_name: ["willow", "  log  "]
+category: "resource"
+type: "log"
+tier: "3"
+examine: "cut at a sawmill to get wood"
+text_color: 23
+frame_color: 23

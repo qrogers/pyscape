@@ -7,7 +7,8 @@ class CommandProcessor():
     #TODO: Add unequip
     #TODO: Add analyze for all places/finish prospect
     #TODO: Add creating new aliases
-    #TODO: Add list dropped command
+    #TODO: Add list dropped items command (take with no args)
+    #TODO: Add shop commands
 
     def __init__(self, var_handler):
         self.command_actions = CommandActions(var_handler)
@@ -27,7 +28,7 @@ class CommandProcessor():
 
         self.aliases = {"plant" : "farm", "pestle" : "grind", "field" : "forage", "track" : "hunt",
                         "pick" : "farm", "chop" : "cut", "man" : "info", "make" : "smith", "grow" : "farm",
-                        "mix" : "brew"}
+                        "mix" : "brew", "gather" : "forage"}
 
     def receive_command(self, cmd):
         command = cmd.split(' ')[0]
@@ -45,8 +46,12 @@ class CommandProcessor():
                 return (self.command_dictionary[command].usage, curses.color_pair(0) + curses.A_BOLD)
         else:
             if command in self.aliases.keys():
-                return self._validate_command(self.aliases[command], args)
-            return ("Invalid command", curses.color_pair(2) + curses.A_UNDERLINE)
+                try:
+                    return self._validate_command(self.aliases[command], args)
+                except RuntimeError:
+                    return ("That command is part of a loop of aliases\nYou need to change one of the aliases", curses.color_pair(2) + curses.A_UNDERLINE)
+            else:
+                return ("Invalid command", curses.color_pair(2) + curses.A_UNDERLINE)
 
     def _execute_command(self, command, args):
         return self.command_dictionary[command].run(args)
@@ -93,6 +98,11 @@ class CommandActions():
             return "That is not an item"
         return "Added {0} {1} to your inventory".format(amount, args[0] + "_" + args[1])
 
+    def gold_command(self, args):
+        inventory = self.var_handler.get('inventory_handler')
+        inventory.change_gold(args[0])
+        return "you gain {0} gold".format(args[0])
+
     #REGULAR COMMANDS
 
     def attack_command(self, args):
@@ -113,11 +123,13 @@ class CommandActions():
         if len(args) == 0:
             if len(object_list) > 0:
                 for game_object in object_list:
-                    objects += game_object.display_name + " "
+                    objects += game_object.name + " "
                     if len(objects.split("\n")[len(objects.split("\n")) - 1]) > 50:
                         objects += "\n"
+                return objects.strip().replace(" ", ", ")
             else:
                 objects += "Nothing in this area"
+                return objects
         else:
             arg = args[0]
             #Correct non plural args
@@ -126,12 +138,13 @@ class CommandActions():
             try:
                 if len(self.var_handler.get('player').area.game_objects[arg]) > 0:
                     for game_object in self.var_handler.get('player').area.game_objects[arg]:
-                            objects += game_object.display_name + " "
+                            objects += game_object.name + " "
+                    return objects.strip().replace(" ", ", ")
                 else:
                     objects += "No {0} in this area".format(arg)
+                    return objects
             except KeyError:
                 return "{0} is not a type of thing".format(args[0])
-        return objects.strip().replace(" ", ", ")
 
     def examine_command(self, args):
         item_name = str(args).replace('\'', '').replace('[', '').replace(']', '').replace(',', '')
@@ -140,6 +153,90 @@ class CommandActions():
             return item.examine
         else:
             return "no {0} found in inventory".format(item_name)
+
+    def store_command(self, args):
+        area = self.var_handler.get('player').area
+        bank = area.get_object('npcs', 'bank')
+        if bank is None:
+            return "There is no bank here"
+        inventory = self.var_handler.get('inventory_handler')
+        if len(args) > 1:
+            item_name = args[0] + "_" + args[1]
+        elif args[0] == "all":
+            item_name = "everything"
+        else:
+            item_name = args[0]
+        store = []
+        all = "all" in args or (len(args) == 1 and args[0] == "everything")
+        if not all:
+            if len(args) == 3:
+                amount = int(args[2])
+            else:
+                amount = 1
+        else:
+            amount = len(inventory.items)
+        if amount == 0:
+            return "You can't store nothing"
+        for item in inventory.items:
+            if amount > 0:
+                if item.name == item_name or (all and item_name == "everything"):
+                    store.append(item)
+                    amount -= 1
+            else:
+                break
+        if len(store) > 0:
+            for item in store:
+                banked = inventory.store(item)
+                if banked == 1:
+                    return "Your bank is full"
+            return "You store {0}".format(item_name)
+        else:
+            return "There is no {0} in your inventory".format(item_name)
+
+    def withdraw_command(self, args):
+        area = self.var_handler.get('player').area
+        bank = area.get_object('npcs', 'bank')
+        if bank is None:
+            return "There is no bank here"
+        inventory = self.var_handler.get('inventory_handler')
+        if len(args) > 1:
+            item_name = args[0] + "_" + args[1]
+        elif args[0] == "all":
+            item_name = "everything"
+        else:
+            item_name = args[0]
+        withdraw = []
+        all = "all" in args or (len(args) == 1 and args[0] == "everything")
+        if not all:
+            if len(args) == 3:
+                amount = int(args[2])
+            else:
+                amount = 1
+        else:
+            amount = len(inventory.bank)
+        if amount == 0:
+            return "You can't withdraw nothing"
+        for item in inventory.bank:
+            if amount > 0:
+                if item.name == item_name or (all and item_name == "everything"):
+                    withdraw.append(item)
+                    amount -= 1
+            else:
+                break
+        if len(withdraw) > 0:
+            for item in withdraw:
+                drawn = inventory.withdraw(item)
+                if drawn == 1:
+                    return "You withdraw as much as you can"
+            return "You withdraw {0}".format(item_name)
+        else:
+            return "There is no {0} in your inventory".format(item_name)
+
+    def bank_command(self, args):
+        inventory = self.var_handler.get('inventory_handler')
+        inventory.display = "bank" if inventory.display == "inventory" else "inventory"
+        inventory.update_inv_window()
+        return ""
 
     def anvil_command(self, args):
         player = self.var_handler.get('player')
@@ -232,7 +329,7 @@ class CommandActions():
         else:
             amount = len(inventory.items)
         if amount == 0:
-            return "Did you mean to drop 9?"
+            return "You can't drop nothing"
         for item in inventory.items:
             if amount > 0:
                 if item.name == item_name or (all and item_name == "everything"):
@@ -305,6 +402,28 @@ class CommandActions():
                 else:
                     location.travel(move)
                     return "You travel to the {0}".format(move)
+
+    def buy_command(self, args):
+        player = self.var_handler.get('player')
+        inventory = self.var_handler.get('inventory_handler')
+        shop = player.area.get_object('npcs', 'shop')
+        if shop is None:
+            return "There is no shop here to buy from"
+        if len(args) == 0:
+            return shop.display()
+        else:
+            amount = 1 if len(args) == 2 else int(args[2])
+            purchase = shop.buy(args[0] + "_" + args[1], amount)
+            if purchase == 1:
+                return "This shop does not have that item"
+            elif purchase == 2:
+                return "You do not have enough gold to buy that "
+            else:
+                inventory.add_item("*", "*", purchase)
+                return "You buy {0}".format(args[0] + "_" + args[1])
+
+    def sell_command(self, args):
+        raise NotImplementedError
 
     def prospect_command(self, args):
         #TODO: add verbose
@@ -635,7 +754,7 @@ class CommandActions():
             items =  anvil.list_makeable_recipes(materials)
             items_string = "You can make:\n"
             if items == []:
-                items_string += "nothing--"
+                items_string += "nothing"
             else:
                 for item in items:
                     items_string += item + ", "

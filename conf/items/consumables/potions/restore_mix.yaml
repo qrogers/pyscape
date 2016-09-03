@@ -1,0 +1,10 @@
+name: "restore_mix"
+display_name: ["restore", "  mix  "]
+category: "consumables"
+type: "potion"
+tier: "1"
+duration: 12
+stats: [restore: 1]
+examine: "restores health over time"
+text_color: 1
+frame_color: 2

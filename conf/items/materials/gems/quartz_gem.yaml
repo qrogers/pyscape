@@ -1,0 +1,8 @@
+name: "quartz_gem"
+display_name: [" quartz", "  gem  "]
+category: "resource"
+type: "gem"
+tier: "1"
+examine: "used to make enchantments"
+text_color: 254
+frame_color: 254

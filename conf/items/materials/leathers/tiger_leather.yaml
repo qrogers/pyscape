@@ -1,0 +1,8 @@
+name: "tiger_leather"
+display_name: [" tiger ", "leather"]
+category: "material"
+type: "leather"
+tier: "3"
+examine: "<smith> into gear"
+text_color: 5
+frame_color: 255

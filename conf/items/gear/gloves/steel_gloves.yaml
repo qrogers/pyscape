@@ -1,0 +1,12 @@
+name: "steel_gloves"
+display_name: [" steel ", "gloves "]
+category: "gear"
+type: "glove"
+tier: "2"
+stats: [defense: 1, attack: 2]
+examine: "A pair of gloves made from steel"
+text_color: 7
+frame_color: 7
+image: ["  ||  ",
+        " T++T ",
+        " ---- "]

@@ -1,0 +1,10 @@
+name: "healing_salve"
+display_name: ["healing", " salve "]
+category: "consumables"
+type: "potion"
+tier: "2"
+duration: 0
+stats: [heal: 8]
+examine: "heals you 8 health"
+text_color: 2
+frame_color: 1

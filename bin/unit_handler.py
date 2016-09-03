@@ -1,22 +1,28 @@
 import game_objects.units as units
 from random import randint
 
+#TODO: Spawn units over time
+
 class UnitHandler():
 
     def __init__(self, area, var_handler):
         self.area = area
         self.units = self.area.game_objects['units']
         self.var_handler = var_handler
+        self.spawners = []
 
-    def spawn_unit(self, area, name):
+    def spawn_unit(self, name):
         class_name = name[:1].upper() + name[1:]
         try:
-            new_unit = getattr(getattr(units, name), class_name)(len(self.units), area, name)
+            new_unit = getattr(getattr(units, name), class_name)(len(self.units), self.area, name)
         except AttributeError as e:
             raise e
             #should give error for unit not found
         new_unit.die = self.kill
-        return new_unit
+        self.area.game_objects['units'].append(new_unit)
+
+    def add_spawner(self, unit, interval):
+        self.spawners.append(self.Spawner(unit, self, interval, self.var_handler.get('time_handler'), self.spawn_unit))
 
     def tick(self, threat):
         for unit in self.units:
@@ -24,6 +30,14 @@ class UnitHandler():
             if randint(0, 100) <= chance:
                 return unit
         return None
+
+    def activate(self):
+        for spawner in self.spawners:
+            spawner.activate()
+
+    def deactivate(self):
+        for spawner in self.spawners:
+            spawner.deactivate()
 
         #Based on current threat, player stealth and unit aggression, chance for unit to attack
         #(threat + aggression) - stealth / 10 = %
@@ -60,3 +74,26 @@ class UnitHandler():
             if unit.display_name == name:
                 return unit
         return None
+
+    class Spawner():
+
+        def __init__(self, unit, unit_handler, interval, time, spawn):
+            self.unit = unit
+            self.unit_handler = unit_handler
+            self.interval = interval
+            self.time = time
+            self.count = 0
+            self.spawn = spawn
+
+        def activate(self):
+            self.time.register_tick_event(self.tick)
+
+        def deactivate(self):
+            self.time.deregister_tick_event(self.tick)
+
+        def tick(self):
+            self.count += 1
+            if self.count >= self.interval:
+                self.count = 0
+                if len(self.unit_handler.units) < self.unit_handler.area.max_enemies:
+                    self.spawn(self.unit)

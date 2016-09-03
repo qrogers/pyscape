@@ -4,5 +4,5 @@ category: "resource"
 type: "log"
 tier: "1"
 examine: "cut at a sawmill to get wood"
-text_color: 3
-frame_color: 3
+text_color: 21
+frame_color: 21

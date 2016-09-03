@@ -4,19 +4,19 @@ from bin.item import Item
 from bin.buff import Buff
 import curses
 
-#TODO: Add bank
-
 class InventoryHandler:
     def __init__(self, inv_window, eqp_window, var_handler):
         self.inv_window = inv_window
         self.eqp_window = eqp_window
         self.var_handler = var_handler
         self.items = []
+        self.bank = []
         self.gold = 0
-        self.items.append(Item("materials", "bars", "steel_bar"))
-        self.items.append(Item("materials", "bars", "bronze_bar"))
-        self.items.append(Item("materials", "bars", "mithril_bar"))
-        #self.items.append(Item("resources", "logs", "oak_log"))
+        # self.items.append(Item("materials", "bars", "steel_bar"))
+        # self.items.append(Item("materials", "bars", "bronze_bar"))
+        # self.items.append(Item("materials", "bars", "mithril_bar"))
+        # self.items.append(Item("materials", "bars", "adamant_bar"))
+        # self.items.append(Item("resources", "logs", "oak_log"))
         # self.items.append(Item("resources", "ores", "iron_ore"))
         # self.items.append(Item("resources", "ores", "iron_ore"))
         # self.items.append(Item("resources", "ores", "iron_ore"))
@@ -29,9 +29,20 @@ class InventoryHandler:
         # self.items.append(Item("gear", "chests", "bronze_chest"))
         # self.items.append(Item("gear", "legs", "bronze_legs"))
         # self.items.append(Item("gear", "gloves", "leather_gloves"))
-        self.items.append(Item("gear", "helmets", "steel_helmet"))
-        self.items.append(Item("gear", "helmets", "bronze_helmet"))
-        # self.items.append(Item("gear", "capes", "bronze_cape"))
+        # self.items.append(Item("gear", "helmets", "steel_helmet"))
+        # self.items.append(Item("gear", "helmets", "bronze_helmet"))
+        # self.items.append(Item("materials", "foods", "cooked_venison"))
+        # self.items.append(Item("resources", "hides", "deer_hide"))
+        # self.items.append(Item("materials", "leathers", "deer_leather"))
+        # self.items.append(Item("resources", "plants", "basil_leaf"))
+        # self.items.append(Item("resources", "fibers", "cotton_boll"))
+        # self.items.append(Item("materials", "ingredients", "basil_powder"))
+        # self.items.append(Item("materials", "cloths", "cotton_fabric"))
+        # self.items.append(Item("materials", "energy", "mystic_energy"))
+        # self.items.append(Item("consumables", "potions", "healing_mix"))
+        # self.items.append(Item("consumables", "potions", "restore_mix"))
+        # self.items.append(Item("consumables", "enchantments", "burning_edge"))
+        # self.items.append(Item("gear", "capes", "tiger_cape"))
         # self.items.append(Item("gear", "offhands", "leather_shield"))
         # self.items.append(Item("gear", "weapons", "bronze_spear"))
         # self.items.append(Item("gear", "boots", "leather_boots"))
@@ -41,17 +52,12 @@ class InventoryHandler:
         # self.items.append(Item("materials", "energy", "mystic_energy"))
         # self.items.append(Item("consumables", "potions", "heal_potion"))
         # self.items.append(Item("consumables", "enchantments", "burning_aura"))
-        # self.items.append(Item("consumables", "enchantments", "burning_aura"))
-        # self.bronze_cape = Item("gear", "capes", "bronze_cape")
-        # self.items.append(self.bronze_cape)
-        # self.bronze_boot = Item("gear", "boots", "bronze_boots")
-        # self.items.append(self.bronze_boot)
-        # self.bronze_leg = Item("gear", "legs", "bronze_legs")
-        # self.items.append(self.bronze_leg)
-        # self.bronze_chest = Item("gear", "chests", "bronze_chest")
-        # self.items.append(self.bronze_chest)
-        # self.bronze_helmet = Item("gear", "helmets", "bronze_helmet")
-        # self.items.append(self.bronze_helmet)
+        # # self.items.append(Item("consumables", "enchantments", "burning_aura"))
+        # self.items.append(Item("gear", "chests", "mithril_chest"))
+        # self.items.append(Item("gear", "legs", "mithril_legs"))
+        # self.items.append(Item("gear", "gloves", "mithril_gloves"))
+        # self.items.append(Item("gear", "boots", "sturdy_boots"))
+        # self.items.append(Item("gear", "rings", "quartz_ring"))
 
         self.dropped = []
 
@@ -59,36 +65,90 @@ class InventoryHandler:
                          "cape" : None, "weapon": None, "leg" : None}
 
         self.max_items = 42
+        self.max_bank = 128
+
+        self.display = "inventory"
 
         self.frames = {}
 
         self.num_columns = 6
 
         self.ore_frame              = ["'''''''''", [":",":"], [":",":"], "........."]
-        self.bar_frame              = ["---------", ["|","|"], ["|","|"], "---------"]
-        self.log_frame              = ["<><>^<><>", ["{","}"], ["{","}"], "<><>^<><>"]
+        self.bar_frame              = ["---------", [" "," "], [" "," "], "---------"]
+
+        self.log_frame              = ["<><>=<><>",
+                                      ["{",    "}"],
+                                      ["{",    "}"],
+                                       "<><>=<><>"]
+
         self.plank_frame            = ["=========", ["[","]"], ["[","]"], "========="]
-        self.meat_frame             = ["~`~`~`~`~", ["$","$"], ["$","$"], "~`~`~`~`~"]
-        self.food_frame             = ["%%%%%%%%%", ["*","*"], ["*","*"], "%%%%%%%%%"]
-        self.hide_frame             = ["TTTTTTTTT", ["#","#"], ["#","#"], "TTTTTTTTT"]
-        self.leather_frame          = ["~~~~~~~~~", ["$","$"], ["$","$"], "~~~~~~~~~"]
-        self.plant_frame            = ["WWWWWWWWW", ["W","M"], ["W","M"], "MMMMMMMMM"]
-        self.ingredient_frame       = ["888888888", ["8","8"], ["8","8"], "888888888"]
-        self.fiber_frame            = ["-~-~-~-~-", ["H","H"], ["H","H"], "~-~-~-~-~"]
-        self.cloth_frame            = ["ZZZZZZZZZ", ["(",")"], ["(",")"], "ZZZZZZZZZ"]
+
+        self.meat_frame             = [" o~o~o~o ",
+                                      ["/",    "\\"],
+                                     ["\\",    "/"],
+                                       " o~o~o~o "]
+
+        self.food_frame             = ["~~~~~~~~~",
+                                      ["|",    "|"],
+                                      ["|",    "|"],
+                                       "~~~~~~~~~"]
+
+        self.hide_frame             = ["X-X-X-X-X",
+                                      [" ",    " "],
+                                      [" ",    " "],
+                                       "X-X-X-X-X"]
+
+        self.leather_frame          = ["=-=-=-=-=",
+                                      [" ",    " "],
+                                      [" ",    " "],
+                                       "=-=-=-=-="]
+
+        self.plant_frame            = [":-:-:-:-:", ["W","M"], ["W","M"],
+                                       ":-:-:-:-:"]
+
+        self.ingredient_frame       = [">|:-~-:|<", ["8","8"], ["8","8"],
+                                       ">|:-~-:|<"]
+
+        self.fiber_frame            = ["|-|-|-|-|", ["H","H"], ["H","H"],
+                                       "|-|-|-|-|"]
+
+        self.cloth_frame            = ["*********", ["(",")"], ["(",")"],
+                                       "*********"]
+
         self.weapon_frame           = ["<><>^<><>", ["<",">"], ["<",">"], "<><>^<><>"]
         self.offhand_frame          = ["<><>^<><>", ["<",">"], ["<",">"], "<><>^<><>"]
-        self.cape_frame             = [".........", [":",":"], [":",":"], "........."]
-        self.chest_frame            = [".........", [":",":"], [":",":"], "........."]
-        self.glove_frame            = ["OOOOOOOOO", ["X","X"], ["X","X"], "OOOOOOOOO"]
-        self.boot_frame             = ["MMMMMMMMM", ["<",">"], ["<",">"], "WWWWWWWWW"]
-        self.leg_frame              = ["HHHHHHHHH", ["!","!"], ["!","!"], "HHHHHHHHH"]
-        self.helmet_frame           = ["HHHHHHHHH", ["!","!"], ["!","!"], "HHHHHHHHH"]
-        self.potion_frame           = ["         ", [" "," "], [" "," "], "         "]
-        self.energy_frame           = ["*~*~*~*~*", [" "," "], [" "," "], "*~*~*~*~*"]
-        self.enchantment_frame      = ["         ", [" "," "], [" "," "], "         "]
 
-        self.steel_sword_frame       = ["LI       ",
+        self.cape_frame             = ["   / \\   ", [":",":"], [":",":"],
+                                       "/       \\"]
+
+        self.chest_frame            = ["[       ]", [":",":"], [":",":"],
+                                       "  [   ]  "]
+
+        self.glove_frame            = ["  | | |  ", ["X","X"], ["X","X"],
+                                       "  \   /  "]
+
+        self.boot_frame             = [" |   |   ", ["<",">"], ["<",">"],
+                                       " \-----]"]
+
+        self.leg_frame              = ["  |\ /|  ", ["!","!"], ["!","!"],
+                                       "  | | |"]
+
+        self.helmet_frame           = ["  /---\  ", ["!","!"], ["!","!"],
+                                       " \-----/ "]
+
+        self.ring_frame             = ["o=o=o=o-o", ["", ""], ["", ""],
+                                       "o=o=o=o=o"]
+
+        self.potion_frame           = ["=*=*=*=*=", [" "," "], [" "," "],
+                                       "=*=*=*=*="]
+
+        self.energy_frame           = ["*~*~*~*~*", [" "," "], [" "," "],
+                                       "*~*~*~*~*"]
+
+        self.enchantment_frame      = ["O-O-O-O-O", [" "," "], [" "," "],
+                                       "O-O-O-O-O"]
+
+        self.steel_sword_frame      = ["LI       ",
                                       [" ",    " "],
                                       [" ",    " "],
                                        " |       "]
@@ -118,6 +178,7 @@ class InventoryHandler:
         self.frames["boot"]         = self.boot_frame
         self.frames["leg"]          = self.leg_frame
         self.frames["helmet"]       = self.helmet_frame
+        self.frames["ring"]         = self.ring_frame
         self.frames["potion"]       = self.potion_frame
         self.frames["energy"]       = self.energy_frame
         self.frames["enchantment"]  = self.enchantment_frame
@@ -126,9 +187,6 @@ class InventoryHandler:
         self.frames["bronze_spear"] = self.bronze_spear_frame
 
         self.update_eqp_window()
-
-    class InventoryFullException(Exception):
-        pass
 
     def change_gold(self, amount):
         self.gold += int(amount)
@@ -151,11 +209,13 @@ class InventoryHandler:
 
     def remove_item(self, item):
         self.items.remove(item)
+        self.update_inv_window()
 
     def take(self, item):
         if len(self.items) < self.max_items:
             self.items.append(item)
             self.dropped.remove(item)
+            self.update_inv_window()
             return 0
         else:
             return 1
@@ -163,12 +223,35 @@ class InventoryHandler:
     def drop(self, item):
         self.remove_item(item)
         self.dropped.append(item)
+        self.update_inv_window()
+
+    def store(self, item):
+        if len(self.bank) < self.max_bank:
+            self.remove_item(item)
+            self.bank.append(item)
+            self.update_inv_window()
+        else:
+            return 1
+
+    def withdraw(self, item):
+        if len(self.items) < self.max_items:
+            self.items.append(item)
+            self.bank.remove(item)
+            self.update_inv_window()
+        else:
+            return 1
 
     def organize(self):
         self.items.sort(key=lambda item: [item.category, item.type, item.tier])
+        self.bank.sort(key=lambda item: [item.category, item.type, item.tier])
 
     def update_inv_window(self):
         self.inv_window.erase()
+        self.draw_inventory() if self.display == "inventory" else self.draw_bank()
+        self.inv_window.box()
+        self.inv_window.refresh()
+
+    def draw_inventory(self):
         self.organize()
         i = 0
         while i < len(self.items):
@@ -176,12 +259,19 @@ class InventoryHandler:
             i += 1
         self.inv_window.move(self.inv_window.getmaxyx()[0] - 2, 2)
         self.inv_window.addstr("Gold: {0}".format(self.gold), curses.color_pair(253))
-        self.inv_window.attron(curses.color_pair(255))
-        self.inv_window.box()
-        self.inv_window.attroff(curses.color_pair(255))
-        self.inv_window.refresh()
+
+    def draw_bank(self):
+        self.inv_window.move(1, 1)
+        row = 0
+        for item in self.bank:
+            self.inv_window.addstr(item.name.replace("_", " "), item.text_color)
+            self.inv_window.move(self.inv_window.getyx()[0] + 1 , 1 + row * 16)
+            if self.inv_window.getyx()[0] > self.inv_window.getmaxyx()[0] - 2:
+                row += 1
+                self.inv_window.move(1, 1 + row * 16)
 
     def equip(self, item):
+        #TODO: check levels for gear tier
         if self.equipped[item.type] is not None:
             self.drop(item)
             self.unequip(self.equipped[item.type])
@@ -235,29 +325,27 @@ class InventoryHandler:
                     image_color = curses.color_pair(255)
                     text_color  = curses.color_pair(255)
                 self.eqp_window.move(y_pos + 0, x_pos)
-                self.eqp_window.addstr("--------", curses.color_pair(255))
+                self.eqp_window.addstr("--------")
                 self.eqp_window.move(y_pos + 1, x_pos)
-                self.eqp_window.addch("|", curses.color_pair(255))
+                self.eqp_window.addch("|")
                 self.eqp_window.addstr(image_0,image_color)
-                self.eqp_window.addch("|", curses.color_pair(255))
+                self.eqp_window.addch("|")
                 self.eqp_window.addstr(" " + slot + ":",  curses.color_pair(254))
                 self.eqp_window.move(y_pos + 2, x_pos)
-                self.eqp_window.addch("|", curses.color_pair(255))
+                self.eqp_window.addch("|")
                 self.eqp_window.addstr(image_1, image_color)
-                self.eqp_window.addch("|", curses.color_pair(255))
+                self.eqp_window.addch("|")
                 self.eqp_window.addstr(" " + name0, text_color)
                 self.eqp_window.move(y_pos + 3, x_pos)
-                self.eqp_window.addch("|", curses.color_pair(255))
+                self.eqp_window.addch("|")
                 self.eqp_window.addstr(image_2, image_color)
-                self.eqp_window.addch("|", curses.color_pair(255))
+                self.eqp_window.addch("|")
                 self.eqp_window.addstr(" " + name1, text_color)
                 self.eqp_window.move(y_pos + 4, x_pos)
-                self.eqp_window.addstr("--------", curses.color_pair(255))
+                self.eqp_window.addstr("--------")
                 j += 1
             i += 1
-        self.eqp_window.attron(curses.color_pair(255))
         self.eqp_window.box()
-        self.eqp_window.attroff(curses.color_pair(255))
 
     def in_inventory(self, name):
         for item in self.items:
@@ -276,12 +364,12 @@ class InventoryHandler:
         self.inv_window.move((y * 4) - 3, x * 10 + 2)
         self.inv_window.addstr(frame[0], item.frame_color)
         self.inv_window.move((y * 4) - 2, x * 10 + 2)
-        self.inv_window.addstr(frame[1][0], item.frame_color)
+        self.inv_window.addstr(" ", item.frame_color)
         self.inv_window.addstr(item.display_name[0], item.text_color)
-        self.inv_window.addstr(frame[1][1], item.frame_color)
+        self.inv_window.addstr(" ", item.frame_color)
         self.inv_window.move((y * 4) - 1, x * 10 + 2)
-        self.inv_window.addstr(frame[2][0], item.frame_color)
+        self.inv_window.addstr(" ", item.frame_color)
         self.inv_window.addstr(item.display_name[1], item.text_color)
-        self.inv_window.addstr(frame[2][1], item.frame_color)
+        self.inv_window.addstr(" ", item.frame_color)
         self.inv_window.move((y * 4) - 0, x * 10 + 2)
         self.inv_window.addstr(frame[3], item.frame_color)

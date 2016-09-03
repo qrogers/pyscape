@@ -8,5 +8,6 @@ class GameObject(object):
         self.var_handler =  self.area.var_handler
         self.status = self.var_handler.get('status_handler')
         self.time = self.var_handler.get('time_handler')
+        self.inventory = self.var_handler.get('inventory_handler')
         self.player = self.var_handler.get('player')
         self.description = description

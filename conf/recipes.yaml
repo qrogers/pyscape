@@ -1,4 +1,5 @@
 all_crafting_recipes:
+
   anvil:
       1:  [leather_boots:  [bronze_bar, deer_leather, deer_leather, deer_leather], leather_gloves: [deer_leather, deer_leather]]
       2:  [bronze_cape:    [bronze_bar, bronze_bar, deer_leather, deer_leather]]
@@ -7,6 +8,7 @@ all_crafting_recipes:
       5:  [leather_shield: [bronze_bar, deer_leather, deer_leather, oak_plank]]
       7:  [bronze_legs:    [bronze_bar, bronze_bar, bronze_bar, cotton_fabric, oak_plank]]
       8:  [bronze_chest:   [bronze_bar, bronze_bar, bronze_bar, bronze_bar, oak_plank, oak_plank, oak_plank, deer_leather]]
+      9:  [quartz_ring:    [bronze_bar, oak_plank, quartz_gem]]
       10: [steel_boots:    [steel_bar, steel_bar, lizard_leather, lizard_leather]]
       11: [steel_gloves:   [steel_bar, steel_bar, lizard_leather, lizard_leather]]
       12: [lizard_cape:    [steel_bar, lizard_leather, lizard_leather, maple_plank]]
@@ -15,9 +17,9 @@ all_crafting_recipes:
       15: [steel_dagger:   [steel_bar, steel_bar, maple_plank]]
       17: [steel_legs:     [steel_bar, steel_bar, steel_bar, lizard_leather, maple_plank]]
       18: [steel_chest:    [steel_bar, steel_bar, steel_bar, steel_bar, steel_bar, lizard_leather, maple_plank]]
-      20: [swift_botos:    [mithril_bar, tiger_leather, willow_plank]]
+      20: [sturdy_boots:    [mithril_bar, tiger_leather, willow_plank]]
       21: [mithril_gloves: [mithril_bar, tiger_leather, tiger_leather]]
-      22: [mithril_cape:   [mithril_bar, mithril_bar, tiger_leather, willow_plank]]
+      22: [tiger_cape:     [mithril_bar, mithril_bar, tiger_leather, willow_plank]]
       23: [mithril_helmet: [mithril_bar, mithril_bar, tiger_leather, tiger_leather, willow_plank]]
       24: [mithril_blade:  [mithril_bar, mithril_bar, mithril_bar, mithril_bar, tiger_leather, willow_plank]]
       25: [mithril_claw:   [mithril_bar, mithril_bar, tiger_leather, willow_plank]]
@@ -46,19 +48,35 @@ all_crafting_recipes:
       20: [tiger_leather:  [tiger_hide, tiger_hide]]
 
 all_alchemy_recipes:
+
   cauldron:
-      1:  [heal_potion: [cooked_venison, basil_powder]]
-      2:  [attack_potion: [basil_powder, cotton_fabric]]
+      1:  [healing_mix:   [cooked_venison, basil_powder]]
+      2:  [attack_mix:    [basil_powder, cotton_fabric]]
+      3:  [defense_mix:   [cooked_venison, cotton_fabric]]
+      4:  [magic_mix:     [cotton_fabric, basil_powder]]
+      6:  [restore_mix:   [cooked_venison, basil_powder, basil_powder]]
+      8:  [refresh_mix:   [cotton_fabric, basil_powder, basil_powder]]
+      10: [healing_salve: [cooked_lizard, flower_mix]]
+
   stove:
       1:  [cooked_venison: [raw_venison]]
       10: [cooked_lizard:  [raw_lizard]]
+      20: [cooked_tiger:   [raw_tiger, raw_tiger]]
+
   pestle:
       1:  [basil_powder: [basil_leaf]]
-      10: [flower_mix: [lily_flower]]
-      20: [petal_dust: [orchid_petal]]
+      10: [flower_mix:   [lily_flower]]
+      20: [petal_dust:   [orchid_petal, orchid_petal]]
+
   spinningwheel:
       1:  [cotton_fabric: [cotton_boll, cotton_boll, cotton_boll]]
+      10: [flax_linen:    [flax_fiber, flax_fiber, flax_fiber]]
+      20: [jute_thread:   [jute_fiber, jute_fiber, jute_fiber, jute_fiber]]
 
 all_magic_recipes:
+
   focus:
-      1: [burning_aura: [mystic_energy, mystic_energy, mystic_energy]]
+      4:  [burning_edge:    [mystic_energy, mystic_energy, quartz_gem]]
+      6:  [stone_durble:    [mystic_energy, mystic_energy, quartz_gem]]
+      12: [abyssal_essence: [cosmic_energy, cosmic_energy, topaz_gem]]
+      18: [aether_plating:  [cosmic_energy, cosmic_energy, topaz_gem]]

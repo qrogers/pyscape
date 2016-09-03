@@ -1,0 +1,8 @@
+name: "tiger_hide"
+display_name: [" tiger ", " hide  "]
+category: "resource"
+type: "hide"
+tier: "3"
+examine: "tan this to get leather"
+text_color: 5
+frame_color: 255

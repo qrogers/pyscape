@@ -1,0 +1,10 @@
+name: "aether_plating"
+display_name: [" aether ", "plating"]
+category: "consumables"
+type: "enchantment"
+tier: "2"
+duration: -1
+stats: [defense: 5]
+examine: "use to enchant to boost defense"
+text_color: 5
+frame_color: 7

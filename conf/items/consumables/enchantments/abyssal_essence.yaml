@@ -1,0 +1,10 @@
+name: "abyssal_essence"
+display_name: ["abyssal", "essence"]
+category: "consumables"
+type: "enchantment"
+tier: "2"
+duration: -1
+stats: [attack: 5]
+examine: "use to enchant to boosts attack"
+text_color: 11
+frame_color: 2

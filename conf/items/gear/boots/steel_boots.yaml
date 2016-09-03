@@ -1,0 +1,12 @@
+name: "steel_boots"
+display_name: ["steel ", " boots "]
+category: "gear"
+type: "boot"
+tier: "2"
+stats: [defense: 2]
+examine: "steel boots"
+text_color: 7
+frame_color: 7
+image: ["/ |_  ",
+        "|   \\ ",
+        "L____\\"]

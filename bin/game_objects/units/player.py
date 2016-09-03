@@ -197,6 +197,7 @@ class Player():
 
     def update_skill_window(self):
         #TODO: Show xp gains
+        self.window.attron(curses.color_pair(254))
         self.window.erase()
         self.window.move(1, 1)
         self.window.addstr("Gathering:   {0}/{1} XP: {2}/{3}".format(self.gathering_current, self.gathering_level,
@@ -245,7 +246,6 @@ class Player():
                                                                     self.xp_table[self.magic_level + 1]))
         self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))
         self.window.refresh()
 
     class Recipes():

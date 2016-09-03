@@ -2,8 +2,12 @@ description: "A small farm outside the walls of Entervale"
 base_threat: 0
 risk: 1
 recovery: 2
+max_enemies: 6
+text:
+triggers: {}
 game_objects:
-  units: []
+  units: !!pairs [slime : 10]
+  npcs: []
   places:
     farm:
       difficulty: 1
@@ -11,7 +15,7 @@ game_objects:
       duration: 5
       size: 4
       variance: 1
-      plants: ["basil", "lily", "orchid"]
+      plants: ["basil", "lily"]
       description: "The farm is abandoned, but the earth is still fertile"
   stations:
     stove:

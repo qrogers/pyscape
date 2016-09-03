@@ -1,14 +1,21 @@
 fir:
   cost:   1
   level:  1
+  xp: 115
   combat: True
   effect: False
   damage: 3
   stats: []
   description: "Blasts your enemy with fire, dealing damage"
 stn:
-  cost:  2
-  level: 2
+  cost:   1
+  level:  1
+  xp: 115
+  combat: Falses
+  effect: False
+  damage: 3
+  stats: []
+  description: "Blasts your enemy with fire, dealing damage"
 civ:
   cost:  1
   level: 3

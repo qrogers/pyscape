@@ -3,6 +3,6 @@ attack:  1
 defense: 1
 proficiency: 1
 aggression: 0
-drops: !!pairs [90: 5-gold, 25: 32-gold, 1: 1-bronze_spear]
+drops: !!pairs [100 : 1-gold, 90 : 5-gold, 25 : 32-gold, 8 : leather_boots, 2 : 1-quartz]
 xp: !!pairs [attack: 5, defense: 3, health: 1]
 description: "A simple slime"

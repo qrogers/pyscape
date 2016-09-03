@@ -32,9 +32,7 @@ class IOHandler():
         self.window.deleteln()
         self.window.insertln()
         self.set_line("", prompt, color_style)
-        self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))
 
         while True:
             c = self.window.getch()
@@ -119,20 +117,20 @@ class IOHandler():
                         self.window.insstr(char, color_style)
                         self.window.move(cursor[0], cursor[1] + 1)
                         cmd_buffer = cmd_buffer[:cursor[1] - len(prompt) - 1] + char + cmd_buffer[cursor[1] - len(prompt) - 1:]
-            self.window.attron(curses.color_pair(255))
+
             self.window.box()
-            self.window.attroff(curses.color_pair(255))
 
     def output(self, text, color_pair=1, style=curses.A_NORMAL):
         str_text = str(text)
         for line in str_text.split("\n"):
-            if len(line) > self.window.getmaxyx()[1]:
-                pass
+            # if len(line) > self.window.getmaxyx()[1]:
+            #     pass
                 #str_text = str_text.replace(" ", "\n", 7)
                 #raise ValueError("line is longer than window")
-            self.history.insert(0, (line, color_pair + style))
-            if len(self.history) > self.prompt_line:
-                self.history.pop(self.prompt_line)
+            if line != "":
+                self.history.insert(0, (line, color_pair + style))
+                if len(self.history) > self.prompt_line:
+                    self.history.pop(self.prompt_line)
         num_lines = self.prompt_line
         self.window.move(self.window.getmaxyx()[0] - 3 - self.prompt_line, 1)
         while (num_lines >= 0):
@@ -143,9 +141,7 @@ class IOHandler():
                 self.window.addstr(self.history[num_lines][0], self.history[num_lines][1])
             self.window.move(cursor[0] + 1, 1)
             num_lines -= 1
-        self.window.attron(curses.color_pair(255))
         self.window.box()
-        self.window.attroff(curses.color_pair(255))
 
     def clear_screen(self):
         self.history = []

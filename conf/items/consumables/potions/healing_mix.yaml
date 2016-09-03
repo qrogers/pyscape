@@ -1,0 +1,10 @@
+name: "healing_mix"
+display_name: ["healing", "  mix  "]
+category: "consumables"
+type: "potion"
+tier: "1"
+duration: 0
+stats: [heal: 4]
+examine: "heals you 4 health"
+text_color: 1
+frame_color: 1

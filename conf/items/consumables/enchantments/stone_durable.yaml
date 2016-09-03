@@ -1,0 +1,10 @@
+name: "stone_durable"
+display_name: [" stone ", "durable"]
+category: "consumables"
+type: "enchantment"
+tier: "1"
+duration: -1
+stats: [defense: 2]
+examine: "enchant gear to make it boost defense"
+text_color: 7
+frame_color: 5

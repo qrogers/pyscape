@@ -1,0 +1,12 @@
+name: "quartz_ring"
+display_name: ["quartz ", "  ring "]
+category: "gear"
+type: "ring"
+tier: "1"
+stats: [attack: 1, defense: 1]
+examine: "quartz inset in oak and bronze"
+text_color: 11
+frame_color: 11
+image: ["  **  ",
+        " /  \\ ",
+        " \\__/ "]
